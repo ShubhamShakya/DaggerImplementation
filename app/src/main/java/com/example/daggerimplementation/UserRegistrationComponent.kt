@@ -10,8 +10,10 @@ import javax.inject.Singleton
 interface UserRegistrationComponent {
     fun inject(mainActivity: MainActivity)
 
-    @Subcomponent.Factory
-    interface Factory{
-        fun create(@BindsInstance retryCount : Int) : UserRegistrationComponent
+    @Subcomponent.Builder
+    interface Builder{
+        fun build() : UserRegistrationComponent
+        fun addRetryCount(@BindsInstance retryCount: Int) : Builder
+
     }
 }
