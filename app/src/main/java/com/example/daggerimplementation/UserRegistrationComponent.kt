@@ -6,14 +6,14 @@ import dagger.Subcomponent
 import javax.inject.Singleton
 
 @ActivityScope
-@Subcomponent( modules = [NotificationServiceModule::class,UserRepositoryModule::class])
+@Component(dependencies = [AppComponent::class], modules = [NotificationServiceModule::class,UserRepositoryModule::class])
 interface UserRegistrationComponent {
     fun inject(mainActivity: MainActivity)
 
-    @Subcomponent.Builder
-    interface Builder{
-        fun build() : UserRegistrationComponent
-        fun addRetryCount(@BindsInstance retryCount: Int) : Builder
+    @Component.Factory
+    interface Factory{
+        fun create(@BindsInstance retryCount : Int,appComponent: AppComponent) : UserRegistrationComponent
+        //fun addRetryCount(@BindsInstance retryCount: Int) : Builder
 
     }
 }

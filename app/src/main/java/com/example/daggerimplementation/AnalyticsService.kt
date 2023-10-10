@@ -7,7 +7,7 @@ interface AnalyticsService {
     fun sendEvent(eventName : String, eventType : String)
 }
 
-class MixPanel : AnalyticsService{
+class MixPanel  @Inject constructor(): AnalyticsService{
     override fun sendEvent(eventName: String, eventType: String) {
       Log.d("AnalyticsService","Event send to Mixpanel : $eventName, $eventType")
     }

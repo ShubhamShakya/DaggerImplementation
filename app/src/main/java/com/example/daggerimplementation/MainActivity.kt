@@ -28,9 +28,7 @@ class MainActivity : AppCompatActivity() {
         //Using create method to create object
         val appComponent = (application as UserApplication).appComponent
         //val userRegistrationService = component.getUserRegistrationService()
-        val component = appComponent.getUserRegistrationComponentBuilder()
-            .addRetryCount(3)
-            .build()
+        val component = DaggerUserRegistrationComponent.factory().create(3,appComponent);
         component.inject(this)
         println("ssssss $userRegistrationService")
         println("sssssst $appComponent")
